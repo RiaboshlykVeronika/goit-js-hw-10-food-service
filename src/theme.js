@@ -1,13 +1,15 @@
-
 const Theme = {
   LIGHT: 'light-theme',
   DARK: 'dark-theme',
 };
 
+// Переключатель тем в DOM
 const inputRef = document.querySelector('#theme-switch-toggle');
 
+// Слушатель события на инпуте
 inputRef.addEventListener('change', changeInput);
 
+// Проверка переключателя
 function changeInput(event) {
   event.currentTarget.checked ? checkedInput() : notCheckedInput();
 }
@@ -43,21 +45,3 @@ function currentTheme() {
 }
 
 currentTheme();
-
-function setLocalStorage(e) {
-  const check = refs.switch.checked;
-
-  if (check) {
-    localStorage.setItem('theme', Theme.DARK);
-  } else {
-    localStorage.removeItem('theme');
-    localStorage.setItem('theme', Theme.LIGHT);
-  }
-}
-
-const themeInLocal = localStorage.getItem('theme');
-
-if (themeInLocal === Theme.DARK) {
-  refs.body.classList.add(Theme.DARK);
-  refs.switch.checked = true;
-}
